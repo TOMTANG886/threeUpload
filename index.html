@@ -5,6 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+                
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet' />
+
+
         <title>Document</title>
         <style>
             .webgl{
@@ -19,11 +24,28 @@
                 z-index: 2;
             }
 
+
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            html, body {
+                overflow: hidden;
+            }
+            #map {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
         </style>
     </head>
     <body>
         <!-- <canvas class="webgl" id="threecanvas"></canvas> -->
-        
+        <div id="map"></div>
 
         <div class="container">
             <input type="file" id="file-input" accept=".glb, .gltf">
@@ -33,7 +55,8 @@
             <button id="increase"style="position: relative;" >返回value值</button>
         </div>
         
-        <script type="module" src="getstart.js"></script>  
+        <script type="module" src="map.js"></script>  
+        <!-- <script type="module" src="getstart.js"></script>   -->
         <!-- <script type="module" src="index.js"></script>   -->
     </body>
 </html>

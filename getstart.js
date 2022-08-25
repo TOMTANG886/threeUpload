@@ -27,8 +27,6 @@ controls.update();
 //add to html body
 document.body.appendChild(renderer.domElement);
 
-const materialmodel = new THREE.MeshBasicMaterial({ color: 0x00ffff });
-
 //import model
 const pickableObjects = []
 const objectsVertices = []
