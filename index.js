@@ -1,55 +1,39 @@
-// import * as THREE from 'three';
-// import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js';
-// import { GLTFLoader } from './three.js-master/examples/jsm/loaders/GLTFLoader.js';
-
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js';
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 const threeCanvas = document.getElementById("threecanvas");
 
 
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({ canvas: threeCanvas });
 renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
-
-
+// canvas is already present in the HTML (`<canvas id="threecanvas">`),
+// no need to append renderer.domElement again — removing append avoids moving the element in the DOM.
 
 //測試
 const raycaster = new THREE.Raycaster()
 const pointer = new THREE.Vector2()
 
 function onPointerMove( event ) {
-
 	// calculate pointer position in normalized device coordinates
 	// (-1 to +1) for both components
-
 	pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
 	pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
 }
 
 
 function render() {
-
 	// update the picking ray with the camera and pointer position
 	raycaster.setFromCamera( pointer, camera );
-
 	// calculate objects intersecting the picking ray
 	const intersects = raycaster.intersectObjects( scene.children );
-
 	for ( let i = 0; i < intersects.length; i ++ ) {
-
 		intersects[ i ].object.material.color.set( 0xff0000 );
-
 	}
-
 	renderer.render( scene, camera );
-
 }
-
-
-
-
 
 //import model
 const loader = new GLTFLoader()
@@ -63,8 +47,6 @@ loader.load('model/house.glb', function(gltf){
 },function(error){
     console.log('err')
 })
-
-
 
 
 var text2 = document.createElement('div');

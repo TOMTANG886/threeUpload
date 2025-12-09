@@ -1,62 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-                
-        <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
-        <link href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet' />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23007ACC'/%3E%3C/svg%3E">
+    <title>Document</title>
+    <style>
+        .webgl {
+            position: absolute; /* ensure canvas sits above non-positioned elements */
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1; /* place canvas above the map so it receives pointer events */
+        }
 
-
-        <title>Document</title>
-        <style>
-            .webgl{
-                /* position: absolute; */
-                height: 100%;
-                width: 100%;
-                top: 0;
-            }
-
-            .container{
-                position: absolute;
-                z-index: 2;
-            }
+        .container {
+            position: absolute;
+            z-index: 2;
+        }
 
 
-            *{
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-            html, body {
-                overflow: hidden;
-            }
-            #map {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-            }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        </style>
-    </head>
-    <body>
-        <!-- <canvas class="webgl" id="threecanvas"></canvas> -->
-        <div id="map"></div>
+        html,
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
 
-        <div class="container">
-            <input type="file" id="file-input" accept=".glb, .gltf">
-            <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="100" class="slider" id="myRange">
-            </div>
-            <button id="increase"style="position: relative;" >返回value值</button>
-        </div>
-        
-        <script type="module" src="map.js"></script>  
-        <!-- <script type="module" src="getstart.js"></script>   -->
-        <!-- <script type="module" src="index.js"></script>   -->
-    </body>
+<body>
+    <canvas class="webgl" id="threecanvas"></canvas>
+    <script type="module" src="./index.js"></script>
+</body>
+
 </html>
